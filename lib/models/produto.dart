@@ -1,16 +1,20 @@
+import 'package:project_flutter/models/categories.dart';
+
 class Produto{
   int id;
-  int idCategory;
-  String icone;
-  String nome;
-  double preco;
+  int category;
+  double valor;
+  String title;
+  String image;
+  String description;
 
   Produto({
     required this.id,
-    required this.idCategory,
-    required this.icone,
-    required this.nome,
-    required this.preco,
+    required this.category,
+    required this.valor,
+    required this.title,
+    required this.image,
+    required this.description,
   });
 
 }

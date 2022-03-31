@@ -4,38 +4,47 @@ class ProdutoRepository{
   static List<Produto> tabela = [
     Produto(
       id: 1,
-      idCategory: 1,
-      icone: 'images/cadeira.jpg', 
-      nome: 'Cadeira Gamer', 
-      preco: 800.90
+      category: 2,
+      valor: 749.99,
+      title: "Cadeira Gamer",
+      image: "images/cadeira.jpg",
+      description:
+          "",
     ),
     Produto(
       id: 2,
-      idCategory: 1,
-      icone: 'images/cadeira.jpg', 
-      nome: 'Cadeira Gamer', 
-      preco: 999.90
+      category: 2,
+      valor: 499.90,
+      title: "Escrivaninha",
+      image: "images/cadeira.jpg",
+      description:
+          "",
     ),
     Produto(
       id: 3,
-      idCategory: 1,
-      icone: 'images/cadeira.jpg', 
-      nome: 'Cadeira Gamer', 
-      preco: 750.90
+      category: 2,
+      valor: 200.00,
+      title: "Bar Stool Chair",
+      image: "images/cadeira.jpg",
+      description:
+          "",
     ),
     Produto(
       id: 4,
-      idCategory: 1,
-      icone: 'images/cadeira.jpg', 
-      nome: 'Cadeira Gamer', 
-      preco: 651.90
-    ),
-    Produto(
+      category: 1,
+      valor: 114.49,
+      title: "Classic Leather Arm Chair",
+      image: "images/cadeira.jpg",
+      description:
+          "",
+    ),Produto(
       id: 5,
-      idCategory: 1,
-      icone: 'images/cadeira.jpg', 
-      nome: 'Cadeira Gamer', 
-      preco: 870.90
+      category: 2,
+      valor: 60.49,
+      title: "Classic Leather Arm Chair",
+      image: "images/cadeira.jpg",
+      description:
+          "",
     ),
   ];
 }
