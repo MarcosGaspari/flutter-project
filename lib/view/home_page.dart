@@ -1,20 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:project_flutter/models/categories.dart';
 import 'package:project_flutter/controller/navBar.dart';
+import 'package:project_flutter/repositores/category_repository.dart';
 import 'package:project_flutter/view/produto_page.dart';
-import 'package:project_flutter/repositores/categories_repository.dart';
 
 class  HomePage extends StatefulWidget {
   const HomePage({ Key? key }) : super(key: key);
-
+  
   @override
   State<HomePage> createState() => _HomePageState();
 }
+List lista = [];
+List<Category> listaCategoria = [];
 
+getCategorias() async{
+  lista = await CategoryRepository().getCategory();
+  for(var item in lista){
+    int id = item["id"];
+    String  nome = item["nome"];
+    String icone = item["icone"];
+    Category categ = new Category(id: id, icone: icone, nome: nome);
+    listaCategoria.add(categ);
+    }
+    return true;
+}
 class _HomePageState extends State<HomePage> {
   @override
-  Widget build(BuildContext context) {
-    final tabela = CategoriesRepository.tabela;
+  Widget build(BuildContext context) 
+  {
+    var a = getCategorias();
+    final tabela = listaCategoria;
 
     mostraProduto(Category category) {
       Navigator.push(

@@ -1,9 +1,12 @@
+
 import 'package:flutter/material.dart';
 import 'package:project_flutter/models/categories.dart';
 import 'package:project_flutter/controller/produto_card.dart';
 import 'package:project_flutter/models/produto.dart';
 import 'package:project_flutter/repositores/produto_repository.dart';
 import 'package:project_flutter/view/detail_page.dart';
+
+import '../repositores/category_repository.dart';
 
 class ProdutoPage extends StatefulWidget {
   Category category;
@@ -14,15 +17,37 @@ class ProdutoPage extends StatefulWidget {
   State<ProdutoPage> createState() => _ProdutoPageState();
 }
 
+List lista = [];
+List<Produto> listaProdutos = [];
+
+getProdutos() async{
+  lista = await CategoryRepository().getProduto();
+  for(var item in lista){
+    int id = item["id"];
+    int category = item["category"];
+    double valor = item["valor"];
+    String title = item["title"];
+    String image = item["image"];
+    String description = item["description"];
+    Produto produto = new Produto(id: id, category: category, valor: valor,title: title, image: image, description: description);
+    listaProdutos.add(produto);
+    }
+    return true;
+}
+
 class _ProdutoPageState extends State<ProdutoPage>{
-  @override
   detailPage(Produto produto) {
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => DetailPage(produto: produto)));
-    }
+  }
 
+  @override
   Widget build(BuildContext context) {
-  final tabela = ProdutoRepository.tabela;
+  var result = getProdutos();
+  var tabela = listaProdutos;
+    var resultado = tabela
+        .where((element) => element.category == widget.category.id)
+        .toList();
 
     return Scaffold(
     appBar: AppBar(
@@ -44,9 +69,9 @@ class _ProdutoPageState extends State<ProdutoPage>{
                   ),
                 ),
                  ListView.builder(
-                  itemCount: tabela.length,
+                  itemCount: resultado.length,
                   itemBuilder: (context, index) => ProductCard(
-                    produto: tabela[index],
+                    produto: resultado[index],
                   ),
                 )
               ],

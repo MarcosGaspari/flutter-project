@@ -13,7 +13,7 @@ class FlutterAplication extends StatelessWidget {
         primarySwatch: Colors.indigo,
       ),
       
-      home: LoginPage(),
+      home: const LoginPage(),
     );
   }
 }

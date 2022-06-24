@@ -1,4 +1,3 @@
-import 'package:project_flutter/models/categories.dart';
 
 class Produto{
   int id;

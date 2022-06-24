@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_flutter/models/produto.dart';
+import 'package:project_flutter/view/detail_page.dart';
 
 class ProductCard extends StatefulWidget {
   Produto produto;
@@ -14,14 +15,14 @@ class _ProductCardState extends State<ProductCard> {
   DetailProduto(Produto produto) {
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => DetailPage(produto: produto)));
-}
+  }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return GestureDetector(
     onTap: () {
-      DetailProduto(tabela[produto]);
+      DetailProduto(widget.produto);
     },
     child: Container(
       margin: const EdgeInsets.symmetric(
